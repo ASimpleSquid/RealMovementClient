@@ -44,30 +44,28 @@ public class GameLogic : MonoBehaviour
 
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
             {
-
+                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.NE:D}");
             }
             else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
             {
-
+                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.NW:D}");
             }
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
             {
-
+                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.SE:D}");
             }
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
             {
-
+                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.SW:D}");
             }
-            else if (Input.GetKey(KeyCode.D)) ;
-
-            else if (Input.GetKey(KeyCode.A)) ;
-
-
-            else if (Input.GetKey(KeyCode.W)) ;
-
-
-            else if (Input.GetKey(KeyCode.S)) ;
-          
+            else if (Input.GetKey(KeyCode.D))
+                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.E:D}");
+            else if (Input.GetKey(KeyCode.A))
+                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.W:D}");
+            else if (Input.GetKey(KeyCode.W))
+            NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.N:D}");
+            else if (Input.GetKey(KeyCode.S))
+                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.S:D}");
         }
 
     }
