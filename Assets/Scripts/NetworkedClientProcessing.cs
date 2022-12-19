@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ static public class NetworkedClientProcessing
         switch ((ServerToClientSignifiers)signifier)
         {
             case ServerToClientSignifiers.connect:
+                gameLogic.CreatePlayer(Int32.Parse(csv[1]));
                 break;
             case ServerToClientSignifiers.disconnect:
                 break;
