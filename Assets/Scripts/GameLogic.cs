@@ -37,12 +37,12 @@ public class GameLogic : MonoBehaviour
     }
     void Update()
     {
-        Directions New = Directions.Stop;
+        //Directions New = Directions.Stop;
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)
             || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
         {
-
+            Directions New = Directions.Stop;
 
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
             {
@@ -68,13 +68,20 @@ public class GameLogic : MonoBehaviour
                 New = Directions.N;
             else if (Input.GetKey(KeyCode.S))
                 New = Directions.S;
+
+
+            if (current != New)
+            {
+                current = New;
+                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{current:D}");
+            }
         }
 
-        if(current != New)
+        /*if(current != New)
         {
             current = New;
             NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{current:D}");
-        }
+        }*/
 
 
     }
