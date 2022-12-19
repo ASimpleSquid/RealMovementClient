@@ -5,17 +5,12 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     GameObject character;
+    List<Player> players;
 
     void Start()
     {
+        players = new List<Player>();
         NetworkedClientProcessing.SetGameLogic(this);
-
-        Sprite circleTexture = Resources.Load<Sprite>("Circle");
-
-        character = new GameObject("Character");
-
-        character.AddComponent<SpriteRenderer>();
-        character.GetComponent<SpriteRenderer>().sprite = circleTexture;
     }
     void Update()
     {
@@ -52,13 +47,6 @@ public class GameLogic : MonoBehaviour
             else if (Input.GetKey(KeyCode.S)) ;
           
         }
-
-        /*characterPositionInPercent += (characterVelocityInPercent * Time.deltaTime);
-
-        Vector2 screenPos = new Vector2(characterPositionInPercent.x * (float)Screen.width, characterPositionInPercent.y * (float)Screen.height);
-        Vector3 characterPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 0));
-        characterPos.z = 0;
-        character.transform.position = characterPos;*/
 
     }
 

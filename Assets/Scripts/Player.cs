@@ -12,11 +12,19 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
+        Sprite circleTexture = Resources.Load<Sprite>("Circle");
+
+        this.gameObject.AddComponent<SpriteRenderer>();
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = circleTexture;
     }
 
     void Update()
     {
-        
+        characterPositionInPercent += (characterVelocityInPercent * Time.deltaTime);
+
+        Vector2 screenPos = new Vector2(characterPositionInPercent.x * (float)Screen.width, characterPositionInPercent.y * (float)Screen.height);
+        Vector3 characterPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 0));
+        characterPos.z = 0;
+        this.transform.position = characterPos;
     }
 }
