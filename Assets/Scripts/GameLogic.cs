@@ -11,6 +11,8 @@ public class GameLogic : MonoBehaviour
     {
         GameObject playerobj = new GameObject("Player");
         Player player = playerobj.AddComponent<Player>();
+        player.id = id;
+        players.Add(player);
     }
 
     void Start()

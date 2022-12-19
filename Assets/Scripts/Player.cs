@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    int id;
+    public int id;
     Vector2 characterPositionInPercent;
     Vector2 characterVelocityInPercent;
     public static readonly float CharacterSpeed = 0.25f;
