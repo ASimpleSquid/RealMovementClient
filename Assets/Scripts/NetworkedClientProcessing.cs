@@ -13,16 +13,18 @@ static public class NetworkedClientProcessing
         string[] csv = msg.Split(',');
         int signifier = int.Parse(csv[0]);
 
-        // if (signifier == ServerToClientSignifiers.asd)
-        // {
+        switch ((ServerToClientSignifiers)signifier)
+        {
+            case ServerToClientSignifiers.connect:
+                break;
+            case ServerToClientSignifiers.disconnect:
+                break;
+            case ServerToClientSignifiers.updatePlayer:
+                break;
 
-        // }
-        // else if (signifier == ServerToClientSignifiers.asd)
-        // {
-
-        // }
-
-        //gameLogic.DoSomething();
+            default:
+                break;
+        }
 
     }
 
@@ -79,15 +81,33 @@ static public class NetworkedClientProcessing
 }
 
 #region Protocol Signifiers
-static public class ClientToServerSignifiers
+public enum ClientToServerSignifiers
 {
-    public const int asd = 1;
+    asd,
+    movement
 }
 
-static public class ServerToClientSignifiers
+public enum ServerToClientSignifiers
 {
-    public const int asd = 1;
+    asd,
+    connect,
+    disconnect,
+    updatePlayer
 }
+
+public enum Directions
+{
+    Stop,
+    N,
+    NE,
+    E,
+    SE,
+    S,
+    SW,
+    W,
+    NW
+}
+
 
 #endregion
 
