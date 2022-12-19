@@ -20,8 +20,10 @@ static public class NetworkedClientProcessing
                 gameLogic.CreatePlayer(Int32.Parse(csv[1]));
                 break;
             case ServerToClientSignifiers.disconnect:
+                gameLogic.DestroyPlayer(Int32.Parse(csv[1]));
                 break;
             case ServerToClientSignifiers.updatePlayer:
+                gameLogic.UpdatePlayer(Int32.Parse(csv[1]));
                 break;
 
             default:

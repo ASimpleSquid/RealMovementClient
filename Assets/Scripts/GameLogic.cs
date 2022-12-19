@@ -22,6 +22,13 @@ public class GameLogic : MonoBehaviour
         Destroy(player.gameObject);
     }
 
+    public void UpdatePlayer(Vector2 Position, Vector2 Velocity, int id)
+    {
+        Player player = players.Find(player => player.id == id);
+        player.characterPositionInPercent = Position;
+        player.characterVelocityInPercent = Velocity;
+    }
+
     void Start()
     {
         players = new List<Player>();

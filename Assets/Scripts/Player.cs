@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int id;
-    Vector2 characterPositionInPercent;
-    Vector2 characterVelocityInPercent;
+    public Vector2 characterPositionInPercent;
+    public Vector2 characterVelocityInPercent;
     public static readonly float CharacterSpeed = 0.25f;
     public static readonly float DiagonalCharacterSpeed = Mathf.Sqrt(CharacterSpeed * CharacterSpeed + CharacterSpeed * CharacterSpeed) / 2f;
 
