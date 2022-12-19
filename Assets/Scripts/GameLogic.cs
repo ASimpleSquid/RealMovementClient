@@ -7,6 +7,12 @@ public class GameLogic : MonoBehaviour
     GameObject character;
     List<Player> players;
 
+    public void CreatePlayer(int id)
+    {
+        GameObject playerobj = new GameObject("Player");
+        Player player = playerobj.AddComponent<Player>();
+    }
+
     void Start()
     {
         players = new List<Player>();
