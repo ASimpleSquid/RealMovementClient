@@ -6,6 +6,7 @@ public class GameLogic : MonoBehaviour
 {
     GameObject character;
     List<Player> players;
+    Directions current;
 
     public void CreatePlayer(int id)
     {
@@ -36,6 +37,7 @@ public class GameLogic : MonoBehaviour
     }
     void Update()
     {
+        Directions New = Directions.Stop;
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)
             || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
@@ -44,29 +46,36 @@ public class GameLogic : MonoBehaviour
 
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
             {
-                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.NE:D}");
+                New = Directions.NE;
             }
             else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
             {
-                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.NW:D}");
+                New = Directions.NW;
             }
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
             {
-                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.SE:D}");
+                New = Directions.SE;
             }
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
             {
-                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.SW:D}");
+                New = Directions.SW;
             }
             else if (Input.GetKey(KeyCode.D))
-                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.E:D}");
+                New = Directions.E;
             else if (Input.GetKey(KeyCode.A))
-                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.W:D}");
+                New = Directions.W;
             else if (Input.GetKey(KeyCode.W))
-            NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.N:D}");
+                New = Directions.N;
             else if (Input.GetKey(KeyCode.S))
-                NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{Directions.S:D}");
+                New = Directions.S;
         }
+
+        if(current != New)
+        {
+            current = New;
+            NetworkedClientProcessing.SendMessageToServer($"{ClientToServerSignifiers.movement:D},{current:D}");
+        }
+
 
     }
 
