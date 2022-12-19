@@ -15,6 +15,13 @@ public class GameLogic : MonoBehaviour
         players.Add(player);
     }
 
+    public void DestroyPlayer(int id)
+    {
+        Player player = players.Find(player => player.id == id);
+        players.RemoveAll(player => player.id == id);
+        Destroy(player.gameObject);
+    }
+
     void Start()
     {
         players = new List<Player>();
