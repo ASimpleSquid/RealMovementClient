@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().sprite = circleTexture;
 
         characterPositionInPercent = new Vector2(.5f, .5f);
-        characterVelocityInPercent = Vector2.zero;
+        characterVelocityInPercent = new Vector2(0f,0f);
     }
 
     void Update()
